@@ -12,8 +12,10 @@ namespace Registreerimissüsteem.Models
         [Key]
         [Required]
         public int Id { get; set; }
+        [StringLength(30, ErrorMessage = "Eesnimi ei tohi olla pikem kui 30 tähemärki")]
         [Required(ErrorMessage = "Sisesta eesnimi")]
         public string FirstName { get; set; }
+        [StringLength(30, ErrorMessage = "Perenimi ei tohi olla pikem kui 30 tähemärki")]
         [Required(ErrorMessage = "Sisesta perenimi")]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Sisesta isikukood")]

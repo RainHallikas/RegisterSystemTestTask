@@ -13,10 +13,12 @@ namespace Registreerimissüsteem.Models
         [Required]
         public int Id { get; set; }
         [Required(ErrorMessage = "Sisesta nimi")]
+        [StringLength(30, ErrorMessage = "Nimi ei tohi olla pikem kui 20 tähemärki")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Sisesta registrinumber")]
         public long RegistryNumber { get; set; }
         [Required(ErrorMessage = "Sisesta osavõtjate arv")]
+        [Range(0, 250, ErrorMessage = "Osavõtjate arv ei tohi olla suurem kui 250")]
         public int NumberOfParticipants { get; set; }
         [Required]
         public int PaymentMethodId { get; set; }

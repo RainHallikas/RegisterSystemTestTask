@@ -160,7 +160,7 @@ namespace Registreerimissüsteem.Controllers
             dbPerson.Active = false;
             UpdateModel(dbPerson);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Participants", new { id = eventId });
         }
 
         public ActionResult DeactivateCompany(int id, int eventId) {
@@ -171,7 +171,7 @@ namespace Registreerimissüsteem.Controllers
             dbCompany.Active = false;
             UpdateModel(dbCompany);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Participants", new { id = eventId });
         }
 
         public ActionResult DeactivateEvent(int id) {

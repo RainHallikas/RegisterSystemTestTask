@@ -17,6 +17,8 @@ namespace Registreerimissüsteem.Controllers
             m.Events = events;
             m.Events = new List<Event>();
             m.Events.AddRange(db.GetEvents());
+            m.Event = new Event();
+            m.Event.Date = DateTime.Now;
             return View(m);
         }
 

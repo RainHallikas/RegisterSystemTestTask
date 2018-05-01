@@ -12,22 +12,31 @@ namespace Registreerimissüsteem.Models
         [Key]
         [Required]
         public int Id { get; set; }
+
         [StringLength(30, ErrorMessage = "Eesnimi ei tohi olla pikem kui 30 tähemärki")]
         [Required(ErrorMessage = "Sisesta eesnimi")]
         public string FirstName { get; set; }
+
         [StringLength(30, ErrorMessage = "Perenimi ei tohi olla pikem kui 30 tähemärki")]
         [Required(ErrorMessage = "Sisesta perenimi")]
         public string LastName { get; set; }
+
         [Required(ErrorMessage = "Sisesta isikukood")]
         public long PersonalCode { get; set; }
+
         public int PaymentMethodId { get; set; }
-        [Required(ErrorMessage = "Sisesta isiku informatsioon")]
+
+        [DataType(DataType.MultilineText)]
         [StringLength(1500, ErrorMessage = "Liiga pikk tekst")]
+        [Required(ErrorMessage = "Sisesta isiku informatsioon")]
         public string Info { get; set; }
+
         [Required]
         public int EventId { get; set; }
+
         [Required]
         public DateTime RegisterDate { get; set; }
+
         [Required]
         public bool Active { get; set; }
 

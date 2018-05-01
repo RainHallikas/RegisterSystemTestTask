@@ -22,9 +22,44 @@
                     </th>
                 </tr>
 
-                @foreach (var item in Model)
-        {
-            if (item.Date < DateTime.Now || item.Active == false) { continue; }
+                @foreach (var item in Model) {
+                    if (item.Date < DateTime.Now || item.Active == false) { continue; }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Osavõtjad", "Participants", new { id = item.Id })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Kustuta", "DeactivateEvent", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="page-header" style="margin-bottom:0;padding:3%; text-align: center; background-color: royalblue; color: white">
+                <h1>Toimunud üritused:</h1>
+            </div>
+            <table class="table" style="text-align:center;background-color:white">
+                <tr>
+                    <th style="text-align:center">
+                        Nimi
+                    </th>
+                    <th style="text-align:center">
+                        Toimumise aeg
+                    </th>
+                    <th style="text-align:center">
+                        Osavõtjad
+                    </th>
+                </tr>
+
+            @foreach (var item in Model) {
+            if (item.Date > DateTime.Now || item.Active == false) { continue; }
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
@@ -35,45 +70,9 @@
                 <td>
                     @Html.ActionLink("Osavõtjad", "Participants", new { id = item.Id })
                 </td>
-                <td>
-                    @Html.ActionLink("Kustuta", "DeactivateEvent", new { id = item.Id })
-                </td>
             </tr>
-}
+            }
             </table>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="page-header" style="margin-bottom:0;padding:3%; text-align: center; background-color: royalblue; color: white">
-                    <h1>Toimunud üritused:</h1>
-                </div>
-                <table class="table" style="text-align:center;background-color:white">
-                    <tr>
-                        <th style="text-align:center">
-                            Nimi
-                        </th>
-                        <th style="text-align:center">
-                            Toimumise aeg
-                        </th>
-                        <th style="text-align:center">
-                            Osavõtjad
-                        </th>
-                    </tr>
-
-                @foreach (var item in Model) {
-                if (item.Date > DateTime.Now || item.Active == false) { continue; }
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Osavõtjad", "Participants", new { id = item.Id })
-                    </td>
-                </tr>
-                }
-                </table>
-            </div>
+       </div>
     </div>
 </div>

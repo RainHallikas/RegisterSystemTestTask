@@ -10,8 +10,7 @@ namespace Registreerimissüsteem.Controllers
     public class AddEventController : Controller
     {
         EditModel m = new EditModel();
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             var db = new EventDbContext();
             var events = db.Events.ToList();
             m.Events = events;
@@ -24,23 +23,19 @@ namespace Registreerimissüsteem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateEvent(EditModel m)
-        {
+        public ActionResult CreateEvent(EditModel m) {
             if (!ModelState.IsValid) return View("Index", m);
-            var e = new Event()
-            {
+            var e = new Event() {
                 Name = m.Event.Name,
                 Date = m.Event.Date,
                 Place = m.Event.Place,
                 Info = m.Event.Info,
                 Active = true
-
             };
             SaveEvent(e);
             return RedirectToAction("Index");
         }
-        public Event SaveEvent(Event e)
-        {
+        public Event SaveEvent(Event e) {
             EventDbContext db = new EventDbContext();
             var list = db.Events.ToList();
             if (list.Contains(list.Find(x => x.Name == e.Name))) return e;

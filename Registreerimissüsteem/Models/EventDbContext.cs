@@ -9,8 +9,7 @@ namespace Registreerimissüsteem.Models
 {
     public class EventDbContext : DbContext
     {
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<PaymentMethod>().ToTable("PaymentMethods");
             modelBuilder.Entity<Event>().ToTable("Events");
             modelBuilder.Entity<Person>().ToTable("Persons");
